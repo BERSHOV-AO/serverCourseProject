@@ -32,7 +32,7 @@ public class ChatServer {
         return port;
     }
 
-    public boolean getServerIsRunning(){
+    public boolean getServerIsRunning() {
         return isRunning;
     }
 
@@ -115,7 +115,7 @@ public class ChatServer {
                 clientSocket.close();
 
             } catch (IOException e) {
-              //  e.printStackTrace();
+                e.printStackTrace();
             }
         }
     }
