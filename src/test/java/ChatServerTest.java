@@ -8,7 +8,6 @@ public class ChatServerTest {
     public void testLoadSetting() {
         ChatServer server = new ChatServer();
         // Проверяем загрузку настроек из файла
-        server.loadSetting();
         assertEquals(PORT, server.getPort());
     }
 }

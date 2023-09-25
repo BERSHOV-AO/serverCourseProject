@@ -20,7 +20,11 @@ public class ChatServer {
         loadSetting();
     }
 
-    public void loadSetting() {
+    public void start() {
+        startServer();
+    }
+
+    private void loadSetting() {
         try (Scanner scanner = new Scanner(new File(SETTING_FILE))) {
             port = Integer.parseInt(scanner.nextLine());
         } catch (FileNotFoundException e) {
@@ -36,7 +40,7 @@ public class ChatServer {
         return isRunning;
     }
 
-    public void startServer() {
+    private void startServer() {
         try {
             serverSocket = new ServerSocket(port);
             System.out.println("Server started on port " + port);
@@ -56,7 +60,7 @@ public class ChatServer {
         }
     }
 
-    public void stopServer() {
+    private void stopServer() {
         try {
             isRunning = false;
             for (Socket clientSocket : clients) {
@@ -82,7 +86,7 @@ public class ChatServer {
         }
     }
 
-    public String getCurrentTime() {
+    private String getCurrentTime() {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         return sdf.format(new Date());
     }
@@ -122,6 +126,6 @@ public class ChatServer {
 
     public static void main(String[] args) {
         ChatServer server = new ChatServer();
-        server.startServer();
+        server.start();
     }
 }
